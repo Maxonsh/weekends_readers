@@ -8,14 +8,11 @@ describe ::Letter do
   end
 
   context 'скоуп сортирует в порядке очереди' do
-
   end
 
   context 'созданое письмо встало в начало очереди' do
-
   end
 
   context 'возвращает письмо, которое нужно отправить' do
-
   end
 end

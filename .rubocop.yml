@@ -1,0 +1,13 @@
+Metrics/LineLength:
+  Max: 99
+
+# Offense count: 2
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/rails'
+    - 'bin/rake'
+
+# Offense count: 4
+# Configuration parameters: Exclude.
+Style/Documentation:
+  Enabled: false
