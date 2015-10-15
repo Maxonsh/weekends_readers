@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.2.3'
+
 gem 'rails', '4.2.3'
 
 gem 'sqlite3'
@@ -16,7 +18,11 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'faker'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'shoulda-matchers', '~> 3.0'
 end
 
+group :development, :test do
+  gem 'rubocop'
+  gem 'brakeman', require: false
+end
