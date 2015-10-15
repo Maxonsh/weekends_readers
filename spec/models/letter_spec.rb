@@ -1,29 +1,35 @@
 require 'rails_helper'
 
-describe ::Letter do
+describe Letter do
   context 'соответствующие валидации включены' do
     it { is_expected.to validate_presence_of(:content) }
-    it { is_expected.to validate_presence_of(:status) }
-    it { is_expected.to validate_presence_of(:position) }
+    it { should validate_uniqueness_of(:position) }
   end
 
-  it 'скоуп сортирует в порядке очереди' do
-    let! (:letter1) { subject.create }
-    let! (:letter2) { subject.create }
+  context '.queue' do
+    let! (:letter1) { described_class.create }
+    let! (:letter2) { described_class.create }
 
-    expect(subject.queue.first).to eq(letter2)
+    it 'скоуп сортирует в порядке очереди' do
+      expect(described_class.queue.first).to eq(letter2)
+    end
   end
 
-  it 'созданое письмо встало в начало очереди' do
-    let! (:letter_last) { subject.create }
+  context 'status "draft"' do
+    let! (:letter1) { described_class.create }
 
-    expect(subject.last.position).to eq(letter_last.position)
+    it 'у созданого письма статус "draft"' do
+      expect(described_class.last.status).to eq(letter1.status)
+    end
   end
 
-  it 'возвращает письмо, которое нужно отправить' do
-    let! (:letter1) { subject.create status: 'draft' }
-    let! (:letter2) { subject.create status: 'send' }
+  context '.for_send' do
+    let! (:letter1) { described_class.create status: 'draft' }
+    let! (:letter2) { described_class.create status: 'draft' }
+    let! (:letter3) { described_class.create status: 'send' }
 
-    expect(subject.for_send).to eq(letter1)
+    it 'возвращает письмо, которое нужно отправить' do
+      expect(described_class.for_send).to eq(letter1)
+    end
   end
 end
