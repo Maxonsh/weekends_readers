@@ -1,7 +1,7 @@
 # see http://doc.gitlab.com/ci/yaml/README.html
 
 before_script:
-  - bundle install --deployment
+  - bundle install
 
 ruby_codestyle:
   script: bundle exec rubocop -R
