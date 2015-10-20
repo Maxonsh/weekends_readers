@@ -15,6 +15,14 @@ describe Letter do
     end
   end
 
+  context '.draft' do
+    let! (:letter1) { described_class.create! }
+
+    it 'скоуп возвращает письма с статусом "draft"' do
+      expect(described_class.draft.last).to eq(letter1)
+    end
+  end
+
   context 'status "draft"' do
     let! (:letter1) { described_class.create! }
 
