@@ -12,16 +12,16 @@ describe Letter do
     let!(:letter1) { described_class.create! content: content }
     let!(:letter2) { described_class.create! content: content }
 
-    it 'скоуп сортирует в порядке очереди' do
+    it 'сортирует в порядке очереди' do
       expect(described_class.queue.first).to eq(letter2)
     end
   end
 
-  context 'status "draft"' do
-    let!(:letter1) { described_class.create! content: content }
+  context '.create' do
+    let!(:letter) { described_class.create! content: content }
 
-    it 'у созданого письма статус "draft"' do
-      expect(described_class.last.status).to eq('draft')
+    it 'создаёт в статусе draft' do
+      expect(letter).to be_draft
     end
   end
 
