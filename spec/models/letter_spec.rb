@@ -26,9 +26,11 @@ describe Letter do
   end
 
   context '.for_send' do
+    before { described_class.delete_all }
+
     let!(:letter1) { described_class.create! status: 'draft', content: content }
     let!(:letter2) { described_class.create! status: 'draft', content: content }
-    let!(:letter3) { described_class.create! status: 'send', content: content }
+    let!(:letter3) { described_class.create! status: 'sent', content: content }
 
     it 'возвращает письмо, которое нужно отправить' do
       expect(described_class.for_send).to eq(letter1)
