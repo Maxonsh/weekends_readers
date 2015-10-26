@@ -43,28 +43,28 @@ describe LetterController do
   describe 'PUT #update' do
     let(:content1) { Faker::Lorem.sentences }
     let(:content2) { Faker::Lorem.sentences }
-
-    letter = Letter.create! content: content1
+    let(:letter) { Letter.create! content: content1 }
 
     subject { put :update, letter: { content: content2 }, id: letter.id }
 
     it 'поменялся контент письма' do
       subject
-      expect(letter.content).to eq(content2)
+      expect(letter.reload.content).to eq(content2)
     end
+
     it 'произошел редирект на index' do
       expect(subject).to redirect_to(letter_index_path)
     end
   end
 
   describe 'DELETE #destroy' do
-    letter = Letter.create! content: content
+    let(:letter) { Letter.create! content: content1 }
 
     subject { delete :destroy, id: letter.id }
 
     it 'письмо удалилось' do
       subject
-      expect(letter).not_to exist
+      expect(letter.reload).not_to be_present
     end
 
     it 'произошел редирект на index' do
