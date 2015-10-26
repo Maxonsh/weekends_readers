@@ -5,7 +5,7 @@ describe Letter do
 
   context 'валидации' do
     it { is_expected.to validate_presence_of(:content) }
-    it { should validate_uniqueness_of(:position) }
+    it { is_expected.to validate_uniqueness_of(:position) }
   end
 
   context '.queue' do
