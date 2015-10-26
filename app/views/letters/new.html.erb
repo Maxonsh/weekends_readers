@@ -1,0 +1,8 @@
+<%= form_for  @letter,
+                :method => (@letter.persisted? ? :patch : :post),
+                :remote => true do |f| %>
+    <div class="letter_textarea">
+      <%= f.text_area :content, :placeholder => "Название релиза" %>
+    </div>
+      <%= f.submit "Сохранить", class: "btn btn-p" %>
+<% end %>
