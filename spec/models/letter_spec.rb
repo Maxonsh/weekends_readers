@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Letter do
-  let(:content) { Faker::Lorem.characters(30) }
+  let(:content) { Faker::Lorem.sentences }
 
   context 'валидации' do
     #

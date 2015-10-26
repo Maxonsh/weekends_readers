@@ -20,7 +20,7 @@ class Letter < ActiveRecord::Base
   end
 
   def set_position_in_queue_end
-    position = Letter.last.position + 1
-    position = 1 if Letter.last.nil?
+    self.position = Letter.last.position + 1
+    self.position = 1 if Letter.last.nil?
   end
 end
