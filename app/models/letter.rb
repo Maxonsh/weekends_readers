@@ -2,7 +2,7 @@ class Letter < ActiveRecord::Base
   validates :content, presence: true
   validates :position, uniqueness: true
 
-  before_create :set_queue
+  before_create :set_position_in_queue_end
 
   scope :queue, -> { order(position: :desc) }
 
@@ -19,8 +19,8 @@ class Letter < ActiveRecord::Base
     Letter.with_status(:draft).queue.last
   end
 
-  def set_queue
-    self.position = 1
-    self.position = Letter.last.position + 1 unless Letter.last.nil?
+  def set_position_in_queue_end
+    position = Letter.last.position + 1
+    position = 1 if Letter.last.nil?
   end
 end
