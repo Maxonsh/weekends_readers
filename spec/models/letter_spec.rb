@@ -4,6 +4,16 @@ describe Letter do
   let(:content) { Faker::Lorem.characters(30) }
 
   context 'валидации' do
+    #
+    # `validate_uniqueness_of` использует первую существующую
+    # запись в базе для проверки уникальности, или новую.
+    # Новая нам не подходит так как у нас стоит ограничение
+    # на поле `content` в базе, тест ломается.
+    #
+    # см. https://github.com/thoughtbot/shoulda-matchers/issues/194
+    #
+    let!(:letter) { described_class.create! content: content }
+
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_uniqueness_of(:position) }
   end
