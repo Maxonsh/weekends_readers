@@ -1,8 +1,5 @@
-<%= form_for  @letter,
-                :method => (@letter.persisted? ? :patch : :post),
-                :remote => true do |f| %>
-    <div class="letter_textarea">
-      <%= f.text_area :content, :placeholder => "Название релиза" %>
-    </div>
-      <%= f.submit "Сохранить", class: "btn btn-p" %>
-<% end %>
+<h1>Создание письма</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'К списку', letters_path %>

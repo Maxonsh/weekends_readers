@@ -14,7 +14,7 @@ class LettersController < ApplicationController
     if @letter.save!
       redirect_to new_letter_path
     else
-      render 'create'
+      render 'edit'
     end
   end
 
@@ -26,7 +26,7 @@ class LettersController < ApplicationController
     @letter = Letter.find(params[:id])
 
     if @letter.update(letter_params)
-      redirect_to letter_index_path
+      redirect_to letters_path
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class LettersController < ApplicationController
 
   def destroy
     @letter = Letter.find(params[:id])
-    redirect_to letter_index_path if @letter.destroy
+    redirect_to letters_path if @letter.destroy
   end
 
   private

@@ -1,0 +1,11 @@
+<% Letter.queue.each do |letter| %>
+  <table>
+    <tr>
+      <td><%= letter.content %></td>
+      <td><%= link_to 'Редактировать', edit_letter_path(letter) %></td>
+      <td><%= link_to 'Удалить', letter_path(letter),
+              method: :delete,
+              data: { confirm: 'Точняк?' } %></td>
+    </tr>
+  </table>
+<% end %>

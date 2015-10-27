@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe LetterController do
-  let(:content) { Faker::Lorem.sentences }
+describe LettersController do
 
   render_views
 
@@ -20,6 +19,7 @@ describe LetterController do
   end
 
   describe 'POST #create' do
+    let!(:content) { Faker::Lorem.sentences }
     subject { post :create, letter: { content: content } }
 
     it 'создалось письмо' do
@@ -53,12 +53,13 @@ describe LetterController do
     end
 
     it 'произошел редирект на index' do
-      expect(subject).to redirect_to(letter_index_path)
+      expect(subject).to redirect_to(letters_path)
     end
   end
 
   describe 'DELETE #destroy' do
-    let(:letter) { Letter.create! content: content1 }
+    let(:content) { Faker::Lorem.sentences }
+    let(:letter) { Letter.create! content: content }
 
     subject { delete :destroy, id: letter.id }
 
@@ -68,7 +69,7 @@ describe LetterController do
     end
 
     it 'произошел редирект на index' do
-      expect(subject).to redirect_to(letter_index_path)
+      expect(subject).to redirect_to(letters_path)
     end
   end
 end
