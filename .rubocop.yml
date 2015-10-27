@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+
 Metrics/LineLength:
   Max: 99
 
@@ -10,4 +14,7 @@ Lint/HandleExceptions:
 # Offense count: 4
 # Configuration parameters: Exclude.
 Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
   Enabled: false

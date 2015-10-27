@@ -14,11 +14,13 @@
 ActiveRecord::Schema.define(version: 20151013151915) do
 
   create_table "letters", force: :cascade do |t|
-    t.text     "content"
-    t.text     "status"
-    t.integer  "position"
+    t.text     "content",    null: false
+    t.text     "status",     null: false
+    t.integer  "position",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "letters", ["position"], name: "index_letters_on_position", unique: true
 
 end

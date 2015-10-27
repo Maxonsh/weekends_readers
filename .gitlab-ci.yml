@@ -10,7 +10,7 @@ tests:
   script:
     - bundle exec rake db:migrate:reset RAILS_ENV=test
     - bundle exec rake db:seed RAILS_ENV=test
-    - bundle exec rspec
+    - RAILS_ENV=test bundle exec rspec
 
 security:
   script: bundle exec brakeman -z
