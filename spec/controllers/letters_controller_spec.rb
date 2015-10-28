@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe LettersController do
+  let(:content) { Faker::Lorem.paragraph }
 
   render_views
 
@@ -19,7 +20,6 @@ describe LettersController do
   end
 
   describe 'POST #create' do
-    let!(:content) { Faker::Lorem.sentences }
     subject { post :create, letter: { content: content } }
 
     it 'создалось письмо' do
@@ -34,15 +34,17 @@ describe LettersController do
   end
 
   describe 'GET #edit' do
+    let(:letter) { Letter.create! content: content }
+
     it 'return http success' do
-      get :edit
+      get :edit, id: letter.id
       expect(response).to be_success
     end
   end
 
   describe 'PUT #update' do
-    let(:content1) { Faker::Lorem.sentences }
-    let(:content2) { Faker::Lorem.sentences }
+    let(:content1) { Faker::Lorem.paragraph }
+    let(:content2) { Faker::Lorem.paragraph }
     let(:letter) { Letter.create! content: content1 }
 
     subject { put :update, letter: { content: content2 }, id: letter.id }
@@ -58,14 +60,13 @@ describe LettersController do
   end
 
   describe 'DELETE #destroy' do
-    let(:content) { Faker::Lorem.sentences }
     let(:letter) { Letter.create! content: content }
 
     subject { delete :destroy, id: letter.id }
 
     it 'письмо удалилось' do
       subject
-      expect(letter.reload).not_to be_present
+      expect { letter.reload }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'произошел редирект на index' do

@@ -1,4 +1,5 @@
-<% Letter.queue.each do |letter| %>
+<%= flash[:notice] %>
+<% @queue.each do |letter| %>
   <table>
     <tr>
       <td><%= letter.content %></td>
