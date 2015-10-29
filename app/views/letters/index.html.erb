@@ -1,8 +1,10 @@
-<%= flash[:notice] %>
+<h1>Список писем</h1>
+
 <% @queue.each do |letter| %>
   <table>
     <tr>
       <td><%= letter.content %></td>
+      <td><%= letter.status %></td>
       <td><%= link_to 'Редактировать', edit_letter_path(letter) %></td>
       <td><%= link_to 'Удалить', letter_path(letter),
               method: :delete,
