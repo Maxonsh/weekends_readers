@@ -1,0 +1,6 @@
+<%= form_for resource_letter, :method => (resource_letter.persisted? ? :patch : :post) do |f| %>
+  <div class="letter_textarea">
+    <%= f.text_area :content, :placeholder => "Содержание письма" %>
+  </div>
+    <%= f.submit "Сохранить", class: "btn btn-p" %>
+<% end %>
