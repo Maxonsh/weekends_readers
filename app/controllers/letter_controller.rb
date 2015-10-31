@@ -1,5 +1,4 @@
 class LetterController < ApplicationController
-
   def index
     @queue = Letter.queue
   end

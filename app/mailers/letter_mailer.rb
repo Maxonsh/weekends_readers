@@ -1,5 +1,4 @@
 class LetterMailer < ApplicationMailer
-
   def send_mail(letter)
     @letter = letter
     mail(
