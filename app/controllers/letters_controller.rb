@@ -1,4 +1,5 @@
 class LettersController < ApplicationController
+  before_filter :authenticate
   helper_method :resource_letter
 
   def index
@@ -41,6 +42,12 @@ class LettersController < ApplicationController
   end
 
   private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == Rails.application.secrets.user && password == Rails.application.secrets.pass
+    end
+  end
 
   def resource_letter
     @resource_letter ||= Letter.find(params[:id])

@@ -1,9 +1,15 @@
 require 'rails_helper'
 
 describe LettersController do
-  let(:content) { Faker::Lorem.paragraph }
-
   render_views
+
+  include AuthHelper
+
+  before(:each) do
+    http_login
+  end
+
+  let(:content) { Faker::Lorem.paragraph }
 
   describe 'GET #index' do
     it 'return http success' do
