@@ -1,14 +1,26 @@
-<h1>Список писем</h1>
-
-<% @queue.each do |letter| %>
-  <table>
-    <tr>
-      <td><%= letter.content %></td>
-      <td><%= letter.status %></td>
-      <td><%= link_to 'Редактировать', edit_letter_path(letter) %></td>
-      <td><%= link_to 'Удалить', letter_path(letter),
-              method: :delete,
-              data: { confirm: 'Точняк?' } %></td>
-    </tr>
-  </table>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <ul class="nav nav-pills">
+      <li>
+        <%= link_to 'Новое', new_letter_path %>
+      </li>
+    </ul>
+    <h4>Список писем</h4>
+  </div>
+    <table class="table table-hover table-condensed">
+        <% @queue.each do |letter| %>
+      <tr>
+        <td><%= letter.content %></td>
+        <% if letter.status == 'draft' %>
+          <td><%= link_to '', edit_letter_path(letter), class: "glyphicon glyphicon-pencil" %></td>
+          <td><%= link_to '', letter_path(letter),class: "glyphicon glyphicon-remove",
+                  method: :delete,
+                  data: { confirm: 'Удалить письмо из очереди?' } %></td>
+        <% else %>
+          <td colspan="2">Отправлено</td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

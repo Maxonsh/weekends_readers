@@ -16,7 +16,7 @@ class LettersController < ApplicationController
       redirect_to new_letter_path, notice: 'Письмо добавлено в очередь'
     else
       flash.now[:error] = 'Письмо не удалось добавить в очередь'
-      render 'edit'
+      render 'new'
     end
   end
 
