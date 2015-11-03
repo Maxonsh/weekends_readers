@@ -1,5 +1,5 @@
 class LettersController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
   helper_method :resource_letter
 
   def index
