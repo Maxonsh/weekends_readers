@@ -231,6 +231,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.0)
+  slim
   sqlite3
   state_machine!
   turbolinks

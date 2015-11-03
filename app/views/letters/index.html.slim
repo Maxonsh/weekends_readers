@@ -1,0 +1,29 @@
+.panel.panel-default
+  .panel-heading
+    ul.nav.nav-pills
+      li
+        = link_to 'Новое', new_letter_path
+    h4
+      | Список писем
+
+  table.table.table-hover.table-condensed
+    - @queue.each do |letter|
+      tr
+        td
+          = letter.content
+        - if letter.draft?
+          td
+            = link_to '', edit_letter_path(letter), class: 'glyphicon glyphicon-pencil'
+          td
+            = link_to '', letter_path(letter), class: 'glyphicon glyphicon-remove',
+                  method: :delete,
+                  data: { confirm: 'Удалить письмо из очереди?' }
+        - else
+          td.info colspan='2'
+            | Отправлено
+
+
+
+
+
+
