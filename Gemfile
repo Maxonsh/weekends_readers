@@ -27,4 +27,5 @@ end
 group :development, :test do
   gem 'rubocop'
   gem 'brakeman', require: false
+  gem 'letter_opener'
 end
