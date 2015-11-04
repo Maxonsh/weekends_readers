@@ -3,14 +3,28 @@
 before_script:
   - bundle install
 
+stages:
+  - build
+  - test
+
 ruby_codestyle:
   script: bundle exec rubocop -R
+  stage: build
+  tags:
+    - ruby
+
+security:
+  script: bundle exec brakeman -z
+  stage: build
+  tags:
+    - ruby
 
 tests:
   script:
     - bundle exec rake db:migrate:reset RAILS_ENV=test
     - bundle exec rake db:seed RAILS_ENV=test
     - RAILS_ENV=test bundle exec rspec
-
-security:
-  script: bundle exec brakeman -z
+  stage: test
+  tags:
+    - ruby
+    - postgres
