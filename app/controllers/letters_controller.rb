@@ -14,9 +14,9 @@ class LettersController < ApplicationController
     @resource_letter = Letter.new(letter_params)
 
     if @resource_letter.save
-      redirect_to new_letter_path, notice: 'Письмо добавлено в очередь'
+      redirect_to new_letter_path, notice: t('.notice')
     else
-      flash.now[:error] = 'Письмо не удалось добавить в очередь'
+      flash.now[:error] = t('.error')
       render 'new'
     end
   end
@@ -26,18 +26,18 @@ class LettersController < ApplicationController
 
   def update
     if resource_letter.update(letter_params)
-      redirect_to letters_path, notice: 'Письмо обновлено'
+      redirect_to letters_path, notice: t('.notice')
     else
-      flash.now[:error] = 'Не удалось обновить письмо'
+      flash.now[:error] = t('.error')
       render 'edit'
     end
   end
 
   def destroy
     if resource_letter.destroy
-      redirect_to letters_path, notice: 'Письмо удалено'
+      redirect_to letters_path, notice: t('.notice')
     else
-      redirect_to letters_path, error: 'Не удалось удалить письмо'
+      redirect_to letters_path, error: t('.error')
     end
   end
 

@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    attributes:
+      letter:
+        content: 'Содержание'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+
+  letters:
+    create:
+      notice: 'Письмо добавлено в очередь'
+      error: 'Письмо не удалось добавить в очередь'
+    update:
+      notice: 'Письмо обновлено'
+      error: 'Не удалось обновить письмо'
+    destroy:
+      notice: 'Письмо удалено'
+      error: 'Не удалось удалить письмо'

@@ -15,7 +15,7 @@ class Letter < ActiveRecord::Base
     end
   end
 
-  def self.for_send
+  def self.next_draft_by_queue
     Letter.with_status(:draft).queue.last
   end
 

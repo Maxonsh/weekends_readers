@@ -1,0 +1,20 @@
+.row
+  .col-lg-12
+    .thumbnail
+      .caption
+        p
+          => letter.content
+        - if letter.draft?
+          .btn-group.btn-group-xs
+            => link_to '', edit_letter_path(letter), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil'
+            => link_to '', letter_path(letter), class: 'btn btn-default btn-sm glyphicon glyphicon-remove',
+                  method: :delete,
+                  data: { confirm: 'Удалить письмо из очереди?' }
+          span.label.label-primary В очереди
+        - else
+          .btn-group.btn-group-xs
+            => link_to '', edit_letter_path(letter), class: 'disabled btn btn-default btn-sm glyphicon glyphicon-pencil'
+            => link_to '', letter_path(letter), class: 'disabled btn btn-default btn-sm glyphicon glyphicon-remove',
+                  method: :delete,
+                  data: { confirm: 'Удалить письмо из очереди?' }
+          span.label.label-success Отправлено

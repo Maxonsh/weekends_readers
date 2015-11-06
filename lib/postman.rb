@@ -1,8 +1,7 @@
 class Postman
-  @letter = Letter.for_send
-
-  def self.deliver(letter = @letter)
-    LetterMailer.send_mail(letter).deliver_now
-    letter.update status: :sent
+  def self.deliver!(letter)
+    LetterMailer.send_mail(letter).deliver_now.tap do
+      letter.to_send!
+    end
   end
 end

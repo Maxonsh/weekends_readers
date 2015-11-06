@@ -1,6 +1,10 @@
 = form_for resource_letter, method: (resource_letter.persisted? ? :patch : :post) do |f|
-  .row
-    .col-lg-12
-      = f.text_area :content, class: "form-control", rows: "5", placeholder: "Содержание письма"
 
-    = f.submit "Сохранить", class: "btn btn-success btn-primary btn-lg"
+  = render 'errors' if resource_letter.errors.any?
+
+  .form-group
+    = f.text_area :content, class: "form-control", autofocus: true, rows: "5", placeholder: "Содержание письма"
+  .form-group
+    = f.submit "Сохранить", class: "btn btn-primary btn-md"
+
+  p = link_to 'Все письма', letters_path

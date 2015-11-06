@@ -1,15 +1,26 @@
 doctype html
 html
   head
-    title
-      | WeekendsReaders
+    title WeekendsReaders
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
 
   body
-    .content
-      - flash.each do |name, msg|
-        = content_tag :div, msg, class: name
-      = yield
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand Что почитать на выходных
+
+        .collapse.navbar-collapse#navbar
+          ul.nav.navbar-nav
+            = main_menu_item 'Создание письма', new_letter_path, ['new']
+            = main_menu_item 'Все письма', letters_path, ['index']
+
+    .container
+      .row
+        .col-lg-12
+          = render 'flash'
+          = yield
+
