@@ -10,10 +10,10 @@
               => link_to '', edit_letter_path(letter), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil'
               => link_to '', letter_path(letter), class: 'btn btn-default btn-sm glyphicon glyphicon-remove',
                     method: :delete,
-                    data: { confirm: 'Удалить письмо из очереди?' }
-            span.label.label-primary В очереди
+                    data: { confirm: t('.delete') }
+            span.label.label-primary = t('.draft')
           - else
             .btn-group.btn-group-xs
               => link_to '', '#', class: 'disabled btn btn-default btn-sm glyphicon glyphicon-pencil'
               => link_to '', '#', class: 'disabled btn btn-default btn-sm glyphicon glyphicon-remove'
-            span.label.label-success Отправлено
+            span.label.label-success = t('.sent')

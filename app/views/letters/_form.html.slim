@@ -3,8 +3,8 @@
   = render 'errors' if resource_letter.errors.any?
 
   .form-group
-    = f.text_area :content, class: "form-control", autofocus: true, rows: "5", placeholder: "Содержание письма"
+    = f.text_area :content, class: "form-control", autofocus: true, rows: "5", placeholder: t('.content')
   .form-group
-    = f.submit "Сохранить", class: "btn btn-primary btn-md"
+    = f.submit t('.save'), class: "btn btn-primary btn-md"
 
-  p = link_to 'Все письма', letters_path
+  p = link_to t('.all_letters'), letters_path
