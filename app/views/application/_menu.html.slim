@@ -1,0 +1,9 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand Что почитать на выходных
+
+        .collapse.navbar-collapse#navbar
+          ul.nav.navbar-nav
+            = main_menu_item 'Создание письма', new_letter_path, ['new']
+            = main_menu_item 'Все письма', letters_path, ['index']

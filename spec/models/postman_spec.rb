@@ -1,14 +1,15 @@
 require 'rails_helper'
+require "#{Rails.root}/lib/postman"
 
 describe Postman do
   let(:content) { Faker::Lorem.paragraph }
   let(:letter) { Letter.create! content: content }
 
-  describe 'отправляет письмо' do
-    subject { described_class.deliver letter }
+  subject { described_class.deliver! letter }
 
+  describe 'отправляет письмо' do
     it 'письмо отправлено' do
-      expect(subject).to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'адресат совпадает' do
@@ -20,11 +21,11 @@ describe Postman do
     end
 
     it 'содержание совпадает' do
-      expect(subject.body.raw_source).to eq(content)
+      expect(subject.body.encoded).to match(content)
     end
   end
 
   it 'статус отправленого письма изменен' do
-    expect(letter.reload).to be_sent
+    expect { subject }.to change { letter.reload.status_name }.from(:draft).to(:sent)
   end
 end

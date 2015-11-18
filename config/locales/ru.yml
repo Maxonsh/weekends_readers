@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+    attributes:
+      letter:
+        content: 'Содержание'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+
+  letters:
+    form:
+      all_letters: 'Все письма'
+      content: 'Содержание письма'
+      save: 'Сохранить'
+    letter:
+      delete: 'Удалить письмо из очереди?'
+      draft: 'В очереди'
+      sent: 'Отправлено'
+    index:
+      title: 'Список писем'
+    new:
+      title: 'Создание письма'
+    edit:
+      title: 'Редактирование письма'
+    create:
+      created: 'Письмо добавлено в очередь'
+      not_created: 'Письмо не удалось добавить в очередь'
+    update:
+      updated: 'Письмо обновлено'
+      not_updated: 'Не удалось обновить письмо'
+    destroy:
+      destroyed: 'Письмо удалено'
+      not_destroyed: 'Не удалось удалить письмо'

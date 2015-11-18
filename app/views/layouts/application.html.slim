@@ -1,15 +1,18 @@
 doctype html
 html
   head
-    title
-      | WeekendsReaders
+    title WeekendsReaders
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
 
   body
-    .content
-      - flash.each do |name, msg|
-        = content_tag :div, msg, class: name
-      = yield
+    = render 'menu'
+
+    .container
+      .row
+        .col-lg-12
+          = render 'flash'
+          = yield
+
