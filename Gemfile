@@ -14,6 +14,14 @@ gem 'slim'
 gem 'turbolinks'
 gem 'state_machine', git: 'https://github.com/seuros/state_machine'
 gem 'awesome_print'
+gem 'pg'
+
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm', require: false
+end
 
 group :test do
   gem 'rspec-rails'
