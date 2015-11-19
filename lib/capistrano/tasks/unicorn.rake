@@ -4,7 +4,9 @@ namespace :unicorn do
   end
 
   def run_unicorn
-    execute :sudo, 'service dealerrents_unicorn start'
+    within release_path do
+      execute :bundle, "exec unicorn -E #{fetch :rails_env} -c #{release_path}/config/unicorn.rb -D"
+    end
   end
 
   desc 'Start unicorn'
@@ -18,7 +20,7 @@ namespace :unicorn do
   task :stop do
     on roles(:app) do
       if test "[ -f #{unicorn_pid} ]"
-        execute :sudo, 'service dealerrents_unicorn stop'
+        execute :kill, "-QUIT `cat #{unicorn_pid}`"
       end
     end
   end

@@ -16,6 +16,11 @@ gem 'state_machine', git: 'https://github.com/seuros/state_machine'
 gem 'awesome_print'
 gem 'pg'
 
+group :production do
+  gem 'dalli'
+  gem 'unicorn'
+end
+
 group :development do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
