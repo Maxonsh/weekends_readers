@@ -4,8 +4,8 @@ lock '3.4.0'
 set :repo_url, 'git@gitlab.cifronomika.ru:cifronomika-ru/weekends_readers.git'
 set :application, 'weekends_readers'
 
-set :rvm_type, :system
-set :rvm_ruby_version, `cat .ruby-version`
+set :rvm_ruby_version, `cat Gemfile`.match(/^ruby '(.*)'$/)[1]
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
