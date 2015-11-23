@@ -19,6 +19,7 @@ gem 'pg'
 group :production do
   gem 'dalli'
   gem 'unicorn'
+  gem 'whenever'
 end
 
 group :development do
