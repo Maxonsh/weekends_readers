@@ -7,9 +7,7 @@ namespace :deploy do
         fetch(:copied_files).each do |file|
           target = release_path.join(file)
           source = shared_path.join(file)
-          unless test "[ -L #{target} ]"
-            execute :cp, '-f', source, target
-          end
+          execute :cp, '-f', source, target unless test "[ -L #{target} ]"
         end
       end
     end

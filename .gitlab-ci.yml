@@ -1,7 +1,7 @@
 # see http://doc.gitlab.com/ci/yaml/README.html
 
 before_script:
-  - bundle install
+  - bundle install --quiet --without development
 
 stages:
   - build

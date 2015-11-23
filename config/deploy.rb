@@ -24,9 +24,11 @@ set :rvm_ruby_version, `cat Gemfile`.match(/^ruby '(.*)'$/)[1]
 # Default value for :pty is false
 # set :pty, true
 
-set :copied_files, fetch(:copied_files, []).push('config/database.yml', 'config/secrets.yml', 'config/unicorn.rb')
+set :copied_files,
+    fetch(:copied_files, []).push('config/database.yml', 'config/secrets.yml', 'config/unicorn.rb')
 
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', '.bundle')
+set :linked_dirs,
+    fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', '.bundle')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
